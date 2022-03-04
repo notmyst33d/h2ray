@@ -42,6 +42,8 @@ cat << EOF > /opt/Caddyfile
 http://:${PORT} {
     header * Server "${SERVER}"
     header * Description "${DESCRIPTION}"
+    header * Access-Control-Allow-Origin "*"
+    header * Access-Control-Allow-Methods "*"
     reverse_proxy / localhost:50000
 }
 EOF

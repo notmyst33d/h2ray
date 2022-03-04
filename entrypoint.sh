@@ -1,5 +1,17 @@
 #!/bin/sh
 
+if [ -z "${ID}" ]; then
+    ID="82516518-2311-8160-0000-000000000000"
+fi
+
+if [ -z "${SERVER}" ]; then
+    SERVER="Hyperwarp"
+fi
+
+if [ -z "${DESCRIPTION}" ]; then
+    DESCRIPTION="Default Hyperwarp server"
+fi
+
 mkdir -p /etc/supervisor.d
 
 cat << EOF > /opt/v2ray.json
@@ -28,7 +40,8 @@ EOF
 
 cat << EOF > /opt/Caddyfile
 http://:${PORT} {
-    header * Server "hyperwarp"
+    header * Server "${SERVER}"
+    header * Description "${DESCRIPTION}"
     reverse_proxy / localhost:50000
 }
 EOF

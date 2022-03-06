@@ -1,17 +1,9 @@
 {
     "name": "hyperwarp",
     "env": {
-        "ID": {
-            "description": "Server ID",
-            "value": "82516518-2311-8160-0000-000000000000"
-        },
-        "SERVER": {
-            "description": "Server Name",
-            "value": "Hyperwarp"
-        },
-        "DESCRIPTION": {
-            "description": "Server Description",
-            "value": "Default Hyperwarp server"
+        "V2RAY_ID": {
+            "description": "V2Ray ID",
+            "value": "4431842e-e7e1-4006-b9fe-0527afc738c6"
         }
     },
     "repository": "https://github.com/notmyst33d/hyperwarp",

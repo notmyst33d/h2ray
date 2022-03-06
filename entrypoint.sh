@@ -1,18 +1,6 @@
-#!/bin/sh
-
-if [ -z "${ID}" ]; then
-    ID="82516518-2311-8160-0000-000000000000"
+if [ -z "${V2RAY_ID}" ]; then
+    V2RAY_ID="4431842e-e7e1-4006-b9fe-0527afc738c6"
 fi
-
-if [ -z "${SERVER}" ]; then
-    SERVER="Hyperwarp"
-fi
-
-if [ -z "${DESCRIPTION}" ]; then
-    DESCRIPTION="Default Hyperwarp server"
-fi
-
-mkdir -p /etc/supervisor.d
 
 cat << EOF > /opt/v2ray.json
 {
@@ -21,7 +9,7 @@ cat << EOF > /opt/v2ray.json
         "protocol": "vmess",
         "settings": {
             "clients": [{
-                "id": "${ID}",
+                "id": "${V2RAY_ID}",
                 "alterId": 64
             }]
         },
@@ -40,32 +28,11 @@ EOF
 
 cat << EOF > /opt/Caddyfile
 http://:${PORT} {
-    header * Server "${SERVER}"
-    header * Description "${DESCRIPTION}"
     header * Access-Control-Allow-Origin "*"
     header * Access-Control-Allow-Methods "*"
     reverse_proxy / localhost:50000
 }
 EOF
 
-# V2Ray
-cat << EOF > /etc/supervisor.d/v2ray.ini
-[program:v2ray]
-command=/opt/v2ray -config /opt/v2ray.json
-autostart=true
-startsecs=3
-autorestart=true
-startretries=3
-EOF
-
-# Caddy
-cat << "EOF" > /etc/supervisor.d/caddy.ini
-[program:caddy]
-command=/opt/caddy run --config /opt/Caddyfile
-autostart=true
-startsecs=3
-autorestart=true
-startretries=3
-EOF
-
-supervisord -n
+/opt/v2ray -config /opt/v2ray.json &
+/opt/caddy run -config /opt/Caddyfile

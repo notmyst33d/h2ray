@@ -1,5 +1,5 @@
 # Deploy
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/notmyst33d/hyperwarp)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/notmyst33d/h2ray)
 
 # Cloudflare Workers Configuration
 ```

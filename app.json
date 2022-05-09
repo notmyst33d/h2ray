@@ -1,5 +1,5 @@
 {
-    "name": "hyperwarp",
+    "name": "h2ray",
     "env": {
         "V2RAY_ID": {
             "description": "V2Ray ID",

@@ -11,7 +11,7 @@ RUN wget https://github.com/XTLS/Xray-core/releases/download/v1.5.5/Xray-linux-6
 
 # Unpack Xray and Caddy
 RUN tar -xzvf caddy_2.5.1_linux_amd64.tar.gz
-RUN unzip Xray-linux-64.zip
+RUN unzip -o Xray-linux-64.zip
 
 # Remove downloaded files to save space
 RUN rm caddy_2.5.1_linux_amd64.tar.gz Xray-linux-64.zip

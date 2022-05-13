@@ -1,12 +1,26 @@
 FROM alpine:edge
 
+# Update the system and get neccesary packages
 RUN apk update
 RUN apk upgrade
+RUN apk add wget unzip
 
-ADD entrypoint.sh /opt/entrypoint.sh
-ADD bin/caddy /opt/caddy
-ADD bin/v2ray /opt/v2ray
+# Download Xray and Caddy
+RUN wget https://github.com/caddyserver/caddy/releases/download/v2.5.1/caddy_2.5.1_linux_amd64.tar.gz
+RUN wget https://github.com/XTLS/Xray-core/releases/download/v1.5.5/Xray-linux-64.zip
 
-RUN chmod +x /opt/entrypoint.sh && chmod +x /opt/caddy && chmod +x /opt/v2ray
+# Unpack Xray and Caddy
+RUN tar -xzvf caddy_2.5.1_linux_amd64.tar.gz
+RUN unzip Xray-linux-64.zip
 
-ENTRYPOINT ["sh", "-c", "/opt/entrypoint.sh"]
+# Remove downloaded files to save space
+RUN rm caddy_2.5.1_linux_amd64.tar.gz Xray-linux-64.zip
+
+# Copy startup.sh
+COPY startup.sh /opt
+
+# Make sure everything is executable
+RUN chmod +x /opt/startup.sh && chmod +x /opt/caddy && chmod +x /opt/xray
+
+ENTRYPOINT ["sh", "-c", "/opt/startup.sh"]
+

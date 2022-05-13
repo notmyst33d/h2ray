@@ -1,8 +1,8 @@
 {
     "name": "h2ray",
     "env": {
-        "V2RAY_ID": {
-            "description": "V2Ray ID",
+        "UUID": {
+            "description": "Server ID",
             "value": "4431842e-e7e1-4006-b9fe-0527afc738c6"
         },
         "SPOOF_HOST": {
@@ -10,6 +10,6 @@
             "value": "https://www.cloudflare.com"
         }
     },
-    "repository": "https://github.com/notmyst33d/hyperwarp",
+    "repository": "https://github.com/notmyst33d/h2ray",
     "stack": "container"
 }

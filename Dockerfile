@@ -1,5 +1,7 @@
 FROM alpine:edge
 
+WORKDIR /opt
+
 # Update the system and get neccesary packages
 RUN apk update
 RUN apk upgrade

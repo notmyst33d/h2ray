@@ -9,7 +9,7 @@ RUN apk add wget unzip
 
 # Download Xray and Caddy
 RUN wget https://github.com/caddyserver/caddy/releases/download/v2.5.1/caddy_2.5.1_linux_amd64.tar.gz
-RUN wget https://github.com/XTLS/Xray-core/releases/download/v1.5.5/Xray-linux-64.zip
+RUN wget https://github.com/XTLS/Xray-core/releases/download/v1.5.8/Xray-linux-64.zip
 
 # Unpack Xray and Caddy
 RUN tar -xzvf caddy_2.5.1_linux_amd64.tar.gz
